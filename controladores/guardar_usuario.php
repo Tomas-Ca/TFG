@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "../config/conexion.php";
 
 $usuario = $_POST["usuario"];
@@ -13,7 +14,9 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $usuario, $email, $password_segura);
 
 if ($stmt->execute()) {
-    echo "Usuario registrado correctamente";
+    $_SESSION["mensaje"] = "Usuario registrado correctamente";
+    header("Location: ../index.php");
+    exit();
 } else {
     echo "Error: " . $stmt->error;
 }
