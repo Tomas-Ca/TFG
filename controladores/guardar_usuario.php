@@ -1,5 +1,5 @@
 <?php
-require "conexion.php";
+require "../config/conexion.php";
 
 $usuario = $_POST["usuario"];
 $email = $_POST["email"];

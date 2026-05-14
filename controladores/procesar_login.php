@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "conexion.php";
+require "../config/conexion.php";
 
 $email = $_POST["email"];
 $password = $_POST["password"];
@@ -20,8 +20,11 @@ if ($resultado->num_rows === 1) {
 
         $_SESSION["usuario_id"] = $usuario["id"];
         $_SESSION["usuario_nombre"] = $usuario["usuario"];
+        $_SESSION["role"] = $usuario["role"];
 
-        header("Location: panel.php");
+        $_SESSION["mensaje"] = "Bienvenido " . $usuario["usuario"];
+
+        header("Location: ../vistas/panel.php");
         exit();
 
     } else {
